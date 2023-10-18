@@ -29,5 +29,26 @@ class TicketMachineTest {
                 // Les montants ont été correctement additionnés  
 		assertEquals(10 + 20, machine.getBalance(), "La balance n'est pas correctement mise à jour");              
 	}
+	//on n’imprime pas leticket si le montant inséré est insuffisant
 
-}
+	@Test
+	void noTicketIfInsufficientAmount() {
+		machine.insertMoney(PRICE - 1); // Insérer un montant inférieur au prix du billet
+		assertFalse(machine.printTicket(), "Pas de ticket lorsque le montant est insuffisant");
+	}
+	@Test
+	void TicketImprimer(){
+		machine.insertMoney(PRICE);
+		assertTrue(machine.printTicket(),"mantant sufisant");
+	}
+
+	// S5 : Quand on imprime un ticket, la balance est décrémentée du prix du ticket.
+
+
+
+
+
+
+
+	}
+
